@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\TimestableTrait;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
@@ -20,6 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\TaxRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Tax
 {
@@ -30,6 +32,7 @@ class Tax
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"product", "postProduct"})
      */
     private $id;
 
@@ -37,6 +40,7 @@ class Tax
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Type("string")
+     * @Groups({"product"})
      */
     private $name;
 
@@ -47,8 +51,44 @@ class Tax
      */
     private $value;
 
-    
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="tax")
+     */
     public $products;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    use TimestableTrait;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTime();
+    }
 
     public function __construct()
     {

@@ -9,9 +9,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class LoadCategoriesCommand extends Command
+class PopulateCategoriesCommand extends Command
 {
-    protected static $defaultName = 'app:load-categories';
+    protected static $defaultName = 'app:populate-categories';
 
     private $entityManager;
     private $categoryRepository;
@@ -28,16 +28,16 @@ class LoadCategoriesCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Load categories')
+            ->setDescription('Populate categories')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->loadCategories();
+        $this->populateCategories();
     }
 
-    public function loadCategories()
+    public function populateCategories()
     {
         $categories[] = ['name' => Category::TEXTIL];
         $categories[] = ['name' => Category::BOOKS];
@@ -56,6 +56,6 @@ class LoadCategoriesCommand extends Command
         }
 
         $this->entityManager->flush();
-        echo "\nCategories has been loaded.";
+        echo "\n Categories has been populated.";
     }
 }
