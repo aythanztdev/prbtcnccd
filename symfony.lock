@@ -113,6 +113,9 @@
             "config/packages/nelmio_cors.yaml"
         ]
     },
+    "nikic/php-parser": {
+        "version": "v4.2.2"
+    },
     "ocramius/package-versions": {
         "version": "1.4.0"
     },
@@ -232,8 +235,20 @@
     "symfony/inflector": {
         "version": "v4.2.9"
     },
+    "symfony/maker-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
+        }
+    },
     "symfony/polyfill-mbstring": {
         "version": "v1.11.0"
+    },
+    "symfony/process": {
+        "version": "v4.2.9"
     },
     "symfony/property-access": {
         "version": "v4.2.9"
@@ -321,6 +336,15 @@
     },
     "symfony/web-link": {
         "version": "v4.2.9"
+    },
+    "symfony/web-server-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
+        }
     },
     "symfony/yaml": {
         "version": "v4.2.9"
