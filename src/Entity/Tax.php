@@ -32,7 +32,7 @@ class Tax
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"product", "postProduct"})
+     * @Groups({"tax", "product", "postProduct"})
      */
     private $id;
 
@@ -40,7 +40,7 @@ class Tax
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Groups({"product"})
+     * @Groups({"tax", "product"})
      */
     private $name;
 
@@ -48,6 +48,7 @@ class Tax
      * @ORM\Column(type="decimal", precision=10, scale=2)
      * @Assert\NotBlank
      * @Assert\Type("numeric")
+     * @Groups({"tax", "product"})
      */
     private $value;
 
@@ -58,11 +59,13 @@ class Tax
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"tax"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"tax"})
      */
     private $updatedAt;
 
