@@ -43,7 +43,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *         "show"={
  *              "method"="GET",
  *              "path"="/media_objects/{id}/show",
- *              "controller"=ShowMediaObjectAction::class
+ *              "controller"=ShowMediaObjectAction::class,
+ *              "swagger_context"={
+ *                  "summary"="Show a MediaObject resource"
+ *              }
  *          },
  *     }
  * )
