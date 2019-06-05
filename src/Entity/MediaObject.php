@@ -56,6 +56,9 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class MediaObject
 {
+    const STATUS_ASSIGNED = 'ASSIGNED';
+    const STATUS_NOT_ASSIGNED = 'NOT_ASSIGNED';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -65,36 +68,33 @@ class MediaObject
     private $id;
 
     /**
-     * @var string|null
-     *
      * @ApiProperty(iri="http://schema.org/contentUrl")
      */
     public $contentUrl;
 
     /**
-     * @var File|null
-     *
      * @Assert\NotNull(groups={"mediaObjectCreate"})
      * @Assert\File(
      *     maxSize = "2048k",
      *     mimeTypes = {"image/jpeg", "image/jpg", "image/png"},
      *     mimeTypesMessage = "Please upload a valid image"
      * )
-     * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath", mimeType="mimeType")
+     * @Vich\UploadableField(mapping="media_object", fileNameProperty="fileName", mimeType="mimeType")
      */
     public $file;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(type="string", length=255)
      * @Groups({"mediaObject", "product"})
      */
-    public $filePath;
+    public $fileName;
 
     /**
-     * @var string|null
-     *
+     * @ORM\Column(type="string", length=255)
+     */
+    public $status = self::STATUS_NOT_ASSIGNED;
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"mediaObject", "product"})
      */
@@ -145,14 +145,14 @@ class MediaObject
         return $this->id;
     }
 
-    public function getFilePath(): ?string
+    public function getFileName(): ?string
     {
-        return $this->filePath;
+        return $this->fileName;
     }
 
-    public function setFilePath(?string $filePath): self
+    public function setFileName(?string $fileName): self
     {
-        $this->filePath = $filePath;
+        $this->fileName = $fileName;
 
         return $this;
     }
@@ -177,6 +177,18 @@ class MediaObject
     public function setMimeType(string $mimeType): self
     {
         $this->mimeType = $mimeType;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
