@@ -16,6 +16,9 @@
             "src/Entity/.gitignore"
         ]
     },
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -100,6 +103,9 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "jms/metadata": {
+        "version": "2.0.0"
     },
     "nelmio/cors-bundle": {
         "version": "1.5",
@@ -207,6 +213,9 @@
             ".env"
         ]
     },
+    "symfony/form": {
+        "version": "v4.2.9"
+    },
     "symfony/framework-bundle": {
         "version": "4.2",
         "recipe": {
@@ -235,6 +244,9 @@
     "symfony/inflector": {
         "version": "v4.2.9"
     },
+    "symfony/intl": {
+        "version": "v4.2.9"
+    },
     "symfony/maker-bundle": {
         "version": "1.0",
         "recipe": {
@@ -243,6 +255,12 @@
             "version": "1.0",
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
+    },
+    "symfony/options-resolver": {
+        "version": "v4.2.9"
+    },
+    "symfony/polyfill-intl-icu": {
+        "version": "v1.11.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.11.0"
@@ -301,6 +319,9 @@
     "symfony/stopwatch": {
         "version": "v4.2.9"
     },
+    "symfony/templating": {
+        "version": "v4.2.9"
+    },
     "symfony/twig-bridge": {
         "version": "v4.2.9"
     },
@@ -351,6 +372,18 @@
     },
     "twig/twig": {
         "version": "v2.11.1"
+    },
+    "vich/uploader-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "c4f5755b37fb65b9c6a3cbdae91205c15a137ed4"
+        },
+        "files": [
+            "config/packages/vich_uploader.yaml"
+        ]
     },
     "webmozart/assert": {
         "version": "1.4.0"

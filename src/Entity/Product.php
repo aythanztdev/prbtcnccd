@@ -7,12 +7,14 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
-* @ApiResource(
+ * @ApiResource(
  *     normalizationContext={"groups"={"product"}},
  *     collectionOperations={
  *         "post"={
@@ -91,6 +93,13 @@ class Product
     public $tax;
 
     /**
+     * @ORM\OneToMany(targetEntity="MediaObject", mappedBy="product")
+     * @Assert\NotBlank
+     * @Groups({"product", "postProduct"})
+     */
+    public $images;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Groups({"product"})
      */
@@ -106,6 +115,11 @@ class Product
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $deletedAt;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     use TimestableTrait;
 
@@ -199,6 +213,37 @@ class Product
     public function setTax(?Tax $tax): self
     {
         $this->tax = $tax;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MediaObject[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(MediaObject $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(MediaObject $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getProduct() === $this) {
+                $image->setProduct(null);
+            }
+        }
 
         return $this;
     }
