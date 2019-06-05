@@ -80,21 +80,24 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @Groups({"product", "postProduct"})
      */
     public $category;
 
     /**
      * @ORM\ManyToOne(targetEntity="Tax", inversedBy="products")
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @Groups({"product", "postProduct"})
      */
     public $tax;
 
     /**
      * @ORM\OneToMany(targetEntity="MediaObject", mappedBy="product")
-     * @Assert\NotBlank
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "You must specify at least one"
+     * )
      * @Groups({"product", "postProduct"})
      */
     public $images;

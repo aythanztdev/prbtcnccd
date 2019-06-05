@@ -14,3 +14,25 @@
 
 ## Utils
 * php bin/console hautelook:fixtures:load --append // Populate tables with random data
+
+## How to create a new product from http://127.0.0.1:8000/api 
+1. GET /api/categories and choose one element. Remember the id.
+2. GET /api/taxes and choose one element. Remember the id.
+3. POST /api/media_objects and upload de file. Show the result and remember the id.
+4. POST /api/products and fill the json:
+```
+    {
+	    "name": "Cap of Star Wars The Last Jedi",
+	    "description": "The Star Wars The Last Jedi Collection 9TWENTY is constructed of a black poly fabric. A Star Wars fighter plane is embroidered on the front panels and the cap features a D-Ring closure.",
+	    "price": "20.50",
+	    "category": {
+		    "id": 1
+	    },
+	    "tax": {
+		    "id": 1
+	    },
+	    "images": [{
+		    "id": 1
+	    }]
+    }
+```
