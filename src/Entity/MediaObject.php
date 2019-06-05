@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\TimestableTrait;
-use App\Controller\CreateMediaObjectAction;
-use App\Controller\ShowMediaObjectAction;
+use App\Controller\MediaObject\CreateMediaObjectAction;
+use App\Controller\MediaObject\ShowMediaObjectAction;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;

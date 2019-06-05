@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\MediaObject;
 
 use App\Entity\MediaObject;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
