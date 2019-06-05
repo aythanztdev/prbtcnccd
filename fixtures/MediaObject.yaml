@@ -1,0 +1,5 @@
+App\Entity\MediaObject:
+    mediaObject_{1..20}:
+      filePath: 'example.jpg'
+      mimeType: 'image/jpge'
+      product:  '@product_*'

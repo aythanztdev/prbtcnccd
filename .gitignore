@@ -3,7 +3,8 @@
 /.env.local.php
 /.env.*.local
 /public/bundles/
-/public/media/
+/public/media/*
+!public/media/example.jpg
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
@@ -60,3 +61,8 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###

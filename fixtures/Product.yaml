@@ -1,0 +1,8 @@
+App\Entity\Product:
+    product_{1..20}:
+        name: <name()>
+        description: <text(200)>
+        price: <randomFloat(2, 10, 70)>
+        priceWithTax: <randomFloat(2, 10, 70)>
+        category: '@category_*'
+        tax: '@tax_*'
