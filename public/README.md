@@ -1,4 +1,9 @@
 # Installation
+## Requirements
+* MySQL
+* PHP >= 7.2
+* Composer
+
 ## Steps
 1. git clone https://github.com/aythanztdev/prbtcnccd.git
 2. cd prbtcnccd
