@@ -13,9 +13,6 @@
 7. php bin/console server:run
 8. Go to the browser and visit http://127.0.0.1:8000/api
 
-## Utils
-* php bin/console hautelook:fixtures:load --append // Populate tables with random data
-
 ## How to create a new product from http://127.0.0.1:8000/api 
 1. GET /api/categories and choose one element. Remember the id.
 2. GET /api/taxes and choose one element. Remember the id.
@@ -37,3 +34,7 @@
 	    }]
     }
 ```
+
+## Utils
+* php bin/console hautelook:fixtures:load --append // Populate tables with random data
+* php bin/phpunit // Run tests

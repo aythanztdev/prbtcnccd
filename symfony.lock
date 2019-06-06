@@ -296,7 +296,7 @@
         ]
     },
     "symfony/http-client": {
-        "version": "v4.3.0"
+        "version": "v4.3.1"
     },
     "symfony/http-foundation": {
         "version": "v4.2.9"
@@ -326,12 +326,12 @@
         "version": "v0.4.0"
     },
     "symfony/phpunit-bridge": {
-        "version": "4.3",
+        "version": "4.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "4.3",
-            "ref": "b0582341f1df39aaf3a9a866cdbe49937da35984"
+            "version": "4.1",
+            "ref": "9dbf01cf67d791746ec772fe274c4d91cbf3c9ec"
         },
         "files": [
             ".env.test",

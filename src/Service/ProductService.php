@@ -27,14 +27,14 @@ class ProductService
         $this->setImagesWithStatusAssigned($images);
     }
 
-    private function calculatePriceWithTax(float $price, float $taxValue): float
+    public function calculatePriceWithTax(float $price, float $taxValue): float
     {
         $priceWithTax = $price*($taxValue/100)+$price;
         
         return $priceWithTax;
     }
 
-    private function setImagesWithStatusAssigned($images)
+    public function setImagesWithStatusAssigned($images)
     {
         foreach ($images as $image) {
             $image->setStatus(MediaObject::STATUS_ASSIGNED);
