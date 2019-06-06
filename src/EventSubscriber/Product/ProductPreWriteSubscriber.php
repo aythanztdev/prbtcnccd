@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 
-final class ProductPreValidateSubscriber implements EventSubscriberInterface
+final class ProductPreWriteSubscriber implements EventSubscriberInterface
 {
     private $productService;
 
@@ -22,11 +22,11 @@ final class ProductPreValidateSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::VIEW => ['validateProductData', EventPriorities::PRE_VALIDATE],
+            KernelEvents::VIEW => ['prepareProductData', EventPriorities::PRE_WRITE],
         ];
     }
 
-    public function validateProductData(GetResponseForControllerResultEvent $event)
+    public function prepareProductData(GetResponseForControllerResultEvent $event)
     {
         $product = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
@@ -34,6 +34,6 @@ final class ProductPreValidateSubscriber implements EventSubscriberInterface
         if (!$product instanceof Product || Request::METHOD_POST !== $method)
             return;
 
-        $this->productService->validateData($product);
+        $this->productService->prepareData($product);
     }
 }
