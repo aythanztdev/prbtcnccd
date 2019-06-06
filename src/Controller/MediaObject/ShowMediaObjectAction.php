@@ -17,7 +17,7 @@ final class ShowMediaObjectAction
 
     public function __invoke(MediaObject $data): BinaryFileResponse
     {
-        $mediaPath = sprintf('%s/media/%s', $this->params->get('webDir'), $data->getFilePath());
+        $mediaPath = sprintf('%s/media/%s', $this->params->get('webDir'), $data->getFileName());
         $file = new BinaryFileResponse($mediaPath);
 
         return $file;
