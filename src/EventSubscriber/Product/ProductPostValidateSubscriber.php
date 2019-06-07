@@ -22,11 +22,11 @@ final class ProductPostValidateSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KernelEvents::VIEW => ['prepareProductData', EventPriorities::POST_VALIDATE],
+            KernelEvents::VIEW => ['validateProductData', EventPriorities::POST_VALIDATE],
         ];
     }
 
-    public function prepareProductData(GetResponseForControllerResultEvent $event)
+    public function validateProductData(GetResponseForControllerResultEvent $event)
     {
         $product = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
@@ -34,6 +34,6 @@ final class ProductPostValidateSubscriber implements EventSubscriberInterface
         if (!$product instanceof Product || Request::METHOD_POST !== $method)
             return;
 
-        $this->productService->prepareData($product);
+        $this->productService->validateData($product);
     }
 }
