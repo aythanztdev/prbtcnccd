@@ -1,4 +1,4 @@
-# Technical test. Building an api using Symfony / API Platform
+# Building an api using Symfony / API Platform
 
 ## Requirements
 * MySQL
