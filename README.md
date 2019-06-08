@@ -1,3 +1,5 @@
+# Technical test. Building an api using Symfony / API Platform
+
 ## Requirements
 * MySQL
 * PHP >= 7.2
