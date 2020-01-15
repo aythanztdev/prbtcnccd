@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+    web:
+        container_name: prbtcnccd-web
+        image: prbtcnccd-web
+        build: ./web
+        ports:
+            - ${APP_PORT}:80
+        volumes:
+            - ${APP_DIR}:/home:ro
+        links:
+            - php
+        network_mode: bridge
+
+    php:
+        container_name: prbtcnccd-php
+        image: prbtcnccd-php
+        build: ./php
+        links:
+            - db
+        volumes:
+            - ${APP_DIR}:/home:cached
+        network_mode: bridge
+
+    db:
+        container_name: prbtcnccd-db
+        image: mariadb:10.1
+        ports:
+            - 3306:3306
+        volumes:
+            - ${APP_DB}:/var/lib/mysql
+            - ${PWD}/db/etc/mysql/conf.d/custom.cnf:/etc/mysql/conf.d/custom.cnf
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        network_mode: bridge

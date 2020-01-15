@@ -67,3 +67,7 @@
 .phpunit
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> docker ###
+_db
+###< docker ###
