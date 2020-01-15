@@ -43,7 +43,7 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"product", "postProduct"})
+     * @Groups({"product"})
      */
     private $id;
 
@@ -96,7 +96,7 @@ class Product
      * @ORM\OneToMany(targetEntity="MediaObject", mappedBy="product")
      * @Assert\Count(
      *      min = "1",
-     *      minMessage = "You must specify at least one"
+     *      minMessage = "You must specify one at least"
      * )
      * @Groups({"product", "postProduct"})
      */
